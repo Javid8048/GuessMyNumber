@@ -17,6 +17,7 @@ let scoreVal = 20;
 function restartGame() {
     successBeat.pause();
     loseBeat.pause();
+    inputBox.value = "";
     questionMark.textContent = "?";
     messageDisplay.textContent = "Start Guessing ...";
     document.documentElement.style.setProperty('--background', 'black');
@@ -41,6 +42,7 @@ submitBtn.addEventListener('click', () => {
     }
     else if(inputBox !== guessNumber) {
         messageDisplay.textContent = inputBox < guessNumber ? "👇 Number is too less" : "👆 Number is too high";
+        inputBox.value = "";
         scoreVal--;
         loseBeat.play();
         if(scoreVal < 1) {
