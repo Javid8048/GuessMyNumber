@@ -7,6 +7,8 @@ const score = document.querySelector(".score");
 const highScore = document.querySelector(".highScore");
 let guessNumber = Math.trunc(Math.random()*20)+1;
 const messageDisplay = document.querySelector(".messageDisplay");
+let inpbox = document.querySelector(".inputBox");
+inpbox.value = 0;
 
 let successBeat = new Audio("./assets/success.mp3");
 let loseBeat = new Audio("./assets/you-lose.mp3");
@@ -15,6 +17,7 @@ let highScoreVal = 0;
 let scoreVal = 20;
 
 function restartGame() {
+    inpbox.value = 0;
     successBeat.pause();
     loseBeat.pause();
     inputBox.value = "";
@@ -29,6 +32,7 @@ function restartGame() {
 againBtn.addEventListener('click', restartGame);
 
 submitBtn.addEventListener('click', () => {
+    if(inpbox == 0) alert("Input Value cannot be 0");
     let inputBox = Number(document.querySelector(".inputBox").value);
     console.log(guessNumber);
     if(inputBox === guessNumber) {
