@@ -7,8 +7,7 @@ const score = document.querySelector(".score");
 const highScore = document.querySelector(".highScore");
 let guessNumber = Math.trunc(Math.random()*20)+1;
 const messageDisplay = document.querySelector(".messageDisplay");
-let inpbox = document.querySelector(".inputBox");
-inpbox.value = 0;
+const inputBox = document.querySelector(".inputBox");
 
 let successBeat = new Audio("./assets/success.mp3");
 let loseBeat = new Audio("./assets/you-lose.mp3");
@@ -17,10 +16,7 @@ let highScoreVal = 0;
 let scoreVal = 20;
 
 function restartGame() {
-    inpbox.value = 0;
-    successBeat.pause();
-    loseBeat.pause();
-    inputBox.value = "";
+    inputBox.value = 0;
     questionMark.textContent = "?";
     messageDisplay.textContent = "Start Guessing ...";
     document.documentElement.style.setProperty('--background', 'black');
@@ -32,28 +28,30 @@ function restartGame() {
 againBtn.addEventListener('click', restartGame);
 
 submitBtn.addEventListener('click', () => {
-    if(inpbox == 0) alert("Input Value cannot be 0");
-    let inputBox = Number(document.querySelector(".inputBox").value);
-    console.log(guessNumber);
-    if(inputBox === guessNumber) {
-        questionMark.textContent = guessNumber;
-        questionMark.style.width = "15rem";
-        messageDisplay.textContent = "🎉 Correct Guess";
-        document.documentElement.style.setProperty('--background', 'green');
-        highScoreVal = scoreVal;
-        highScore.textContent = highScoreVal < guessNumber ? scoreVal : highScoreVal;
-        successBeat.play();
+    let inputBoxValue = Number(inputBox.value);
+    if(!inputBoxValue) {
+        alert("Check number cannot be zero, click the input box");
+    } else {
+        if(inputBoxValue === guessNumber) {
+            questionMark.textContent = guessNumber;
+            questionMark.style.width = "15rem";
+            messageDisplay.textContent = "🎉 Correct Guess";
+            document.documentElement.style.setProperty('--background', 'green');
+            highScoreVal = scoreVal;
+            highScore.textContent = highScoreVal < guessNumber ? scoreVal : highScoreVal;
+            successBeat.play();
+        }
+        else if(inputBoxValue !== guessNumber) {
+            messageDisplay.textContent = inputBoxValue < guessNumber ? "👇 Number is too less" : "👆 Number is too high";
+            inputBox.value = "";
+            scoreVal--;
+            loseBeat.play();
+            if(scoreVal < 1) {
+                alert("Game Over"); 
+                restartGame();
+            };
+        }
+        score.textContent = scoreVal;
     }
-    else if(inputBox !== guessNumber) {
-        messageDisplay.textContent = inputBox < guessNumber ? "👇 Number is too less" : "👆 Number is too high";
-        inputBox.value = "";
-        scoreVal--;
-        loseBeat.play();
-        if(scoreVal < 1) {
-            restartGame()
-            alert("Game Over"); 
-        };
-    }
-    score.textContent = scoreVal;
 });
 
