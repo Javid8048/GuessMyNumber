@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --background: black;
+    --font-color: white;
+    --font-size: 2rem;
+    --font-size-big: 5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P';
+}
+
+body {
+    background-color: var(--background);
+    color: var(--font-color);
+    width: 100vw;
+    height: 100vh;
+    font-size: var(--font-size);
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 1%;
+    font-size: var(--font-size);
+    border-radius: 5px;
+    border: none;
+}
+
+.headerSection {
+    border-top: 5px solid transparent;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+}
+
+.screenSection {
+    width: 95%;
+    height: 30%;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./assets/gameBg.gif);
+    background-size: cover;
+}
+
+.questionMark {
+    font-size: var(--font-size-big);
+    background: white;
+    color: black;
+    width: 10rem;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.outputSection {
+    width: 100%;
+    height: 55%;
+    display: flex;
+}
+
+.inputBox {
+    font-size: var(--font-size-big);
+    background: transparent;
+    color: white;
+    display: flex;
+    text-align: center;
+    padding: 10px;
+    margin: 10px 3rem;
+    border: 1px solid wheat;
+}
+
+.box1 {
+    padding: 3%;
+    width: 50%; height: 100%;
+}
+.box2 {
+    padding: 5rem 10px;
+    width: 50%; height: 100%;
+}
+
+.submitBtn {
+    margin: 5% 7%;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      font-size: 1rem;
+    }
+    .outputSection {
+        display: block;
+    }
+    .box1 {
+        width: 100%; height: 55%;
+        padding: 0;
+    }
+
+    .box2 {
+        width: 100%; height: 30%; padding: 0px 34px;
+    }
+
+    .headerSection {
+        display: block;
+        height: 18%;
+    }
+
+  }

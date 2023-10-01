@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <section class="headerSection">
+            <button class="btn againBtn">Restart the Game</button>
+            <marquee style="font-size: 1rem; margin-top: 5px;">Enter Number Between 1 to 20</marquee>
+        </section>
+
+        <section class="screenSection">
+            <h1>Guess A Number</h1>
+            <span class="questionMark">?</span>
+        </section>
+
+        <section class="outputSection">
+            <div class="box1">
+                <input class="inputBox" type="number" min="1" max="20">
+                <button class="btn submitBtn">Checks!</button>
+            </div>
+            <div class="box2">
+                <h5 class="messageDisplay">Start Guessing ...</h5>
+                <br><br>
+                <h5>Your Score : <span class="score">20</span></h5> <br>
+                <h5>Highscore : <span class="highScore">0</span></h5>
+            </div>
+        </section>
+</body>
+<script src="script.js"></script>
+</html>
